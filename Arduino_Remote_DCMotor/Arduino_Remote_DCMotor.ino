@@ -6,7 +6,7 @@
 
 const int receiver = 11; // Signal Pin of IR receiver
 
-static const int increment = 50;
+static const int increment = 64;
 int fanValue = 255;
 bool isOn = false;
 
@@ -26,14 +26,14 @@ void TogglePower() {
 }
 
 void PowerUp() {
-  fanValue = constrain(fanValue + increment, 0, 255);
+  fanValue = constrain(fanValue + increment, 100, 255);
   if (isOn) analogWrite(ENABLE, fanValue);
   Serial.print("Speed up -> ");
   Serial.println(fanValue);
 }
 
 void PowerDown() {
-  fanValue = constrain(fanValue - increment, 0, 255);
+  fanValue = constrain(fanValue - increment, 100, 255);
   if (isOn) analogWrite(ENABLE, fanValue);
   Serial.print("Speed down -> ");
   Serial.println(fanValue);
